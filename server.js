@@ -6,8 +6,6 @@ import mongoose from "mongoose";
 import connectDB from "./config/db.js";
 
 // Import Routes
-import signupRoutes from "./routes/signupRoutes.js";
-import loginRoutes from "./routes/loginRoutes.js";
 import menuRoutes from "./routes/menuRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
@@ -37,8 +35,6 @@ app.use((req, res, next) => {
 });
 
 // Route middleware
-app.use("/api", signupRoutes);
-app.use("/api", loginRoutes);
 app.use("/api", menuRoutes);
 app.use("/api", adminRoutes);
 app.use("/api", orderRoutes);
