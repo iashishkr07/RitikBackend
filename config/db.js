@@ -29,7 +29,7 @@ const connectDB = async () => {
       process.env.MONGODB_URI.replace(/\/\/[^:]+:[^@]+@/, "//****:****@")
     ); // Hide credentials in logs
 
-    const conn = await mongoose.connect(process.env.MONGODB_URI, {
+    const conn = await mongoose.connect( `${process.env.MONGODB_URI}/H`, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s

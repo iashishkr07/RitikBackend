@@ -6,12 +6,10 @@ import mongoose from "mongoose";
 import connectDB from "./config/db.js";
 
 // Import Routes
-import menuRoutes from "./routes/menuRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
-import orderRoutes from "./routes/orderRoutes.js";
-import userRoutes from "./routes/userRoutes.js";
-import reservationRoutes from './routes/reservationRoutes.js';
+import userRoutes from "./routes/registerRoutes.js";
 import contactRoutes from "./routes/contactRoutes.js";
+import businessIdeaRoutes from "./routes/businessIdeaRoutes.js";
 
 // Load environment variables
 dotenv.config();
@@ -35,13 +33,10 @@ app.use((req, res, next) => {
 });
 
 // Route middleware
-app.use("/api", menuRoutes);
 app.use("/api", adminRoutes);
-app.use("/api", orderRoutes);
 app.use("/api", userRoutes);
-app.use('/api',reservationRoutes);
-app.use('/api',contactRoutes)
-
+app.use("/api", contactRoutes);
+app.use("/api", businessIdeaRoutes);
 
 // Health check route
 app.get("/", (req, res) => {

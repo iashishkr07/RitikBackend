@@ -1,18 +1,22 @@
 import Contact from "../models/Contact.js";
 
-export const submitContactForm = async (req, res) => {
-  const { name, email, subject, message } = req.body;
-
-  if (!name || !email || !subject || !message) {
-    return res.status(400).json({ success: false, message: "All fields are required." });
-  }
-
+// Create a new contact
+export const createContact = async (req, res) => {
   try {
-    const contact = new Contact({ name, email, subject, message });
+    const contact = new Contact(req.body);
     await contact.save();
-    res.status(201).json({ success: true, message: "Message saved successfully." });
+    res.status(201).json(contact);
   } catch (error) {
-    console.error("Error saving contact:", error);
-    res.status(500).json({ success: false, message: "Server error." });
+    res.status(400).json({ error: error.message });
+  }
+};
+
+// Get all contacts
+export const getContacts = async (req, res) => {
+  try {
+    const contacts = await Contact.find();
+    res.json(contacts);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 };

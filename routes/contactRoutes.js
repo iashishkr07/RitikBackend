@@ -1,8 +1,15 @@
 import express from "express";
-import { submitContactForm } from "../controllers/contactController.js";
+import {
+  createContact,
+  getContacts,
+} from "../controllers/contactController.js";
 
 const router = express.Router();
 
-router.post("/contact", submitContactForm);
+// Create a new contact
+router.post("/contacts", createContact);
+
+// Get all contacts
+router.get("/contacts", getContacts);
 
 export default router;
