@@ -1,27 +1,27 @@
 import express from "express";
 import {
-  createUser,
-  getUsers,
-  getUserById,
-  updateUser,
-  deleteUser,
+  createRegister,
+  getRegisters,
+  getRegisterById,
+  updateRegister,
+  deleteRegister,
 } from "../controllers/registerController.js";
 
 const router = express.Router();
 
 // Create a new register
-router.post("/registers", createUser);
+router.post("/registers", createRegister);
 
 // Get all registers
-router.get("/registers", getUsers);
+router.get("/registers", getRegisters);
 
 // Get a single register by ID
-router.get("/registers/:id", getUserById);
+router.get("/registers/:id", getRegisterById);
 
 // Update a register by ID
-router.put("/registers/:id", updateUser);
+router.put("/registers/:id", updateRegister);
 
 // Delete a register by ID
-router.delete("/registers/:id", deleteUser);
+router.delete("/registers/:id", deleteRegister);
 
 export default router;
